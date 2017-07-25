@@ -62,3 +62,12 @@ h1 {
 .controls {
     margin: auto 0;
 }
+
+.destination-selector {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    justify-content: space-around;
+}
