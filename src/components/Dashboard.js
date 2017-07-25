@@ -11,13 +11,18 @@ class Dashboard extends Component {
     render() {
         return (
             <section className="Dashboard">
-                <div>{this.props.speed}</div>
-                <div>
-                    <label htmlFor="duration">
-                        <span>Duration:</span>
-                        <input onChange={this.updateTime} id="duration" type="number"/>
-                        <span>years</span>
-                    </label>
+                <div className="container">
+                    <h1>Spaceport</h1>
+                    {0 ? <div>{this.props.speed}</div> : null}
+                    <div className="destination">
+                    </div>
+                    <div className="controls">
+                        <label htmlFor="duration">
+                            <span>Duration:</span>
+                            <input onChange={this.updateTime} id="duration" type="number"/>
+                            <span>years</span>
+                        </label>
+                    </div>
                 </div>
             </section>
         );
