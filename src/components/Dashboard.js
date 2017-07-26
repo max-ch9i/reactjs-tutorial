@@ -38,7 +38,7 @@ class Dashboard extends Component {
                             <li><button className="btn-destination" onClick={this.updateDestination} value="venus">Venus</button></li>
                         </ul>
                         <div>
-                            Fly there for <span contentEditable="true" className="duration" onKeyDown={this.updateTime}></span> years
+                            Fly there for <span contentEditable="true" className="duration" onKeyUp={this.updateTime}></span> years
                         </div>
                     </div>
                     <div className="summary">
