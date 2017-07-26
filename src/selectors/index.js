@@ -36,4 +36,15 @@ export const getDestinationTitle = createSelector(
     }
 );
 
+export const getDestinationImg = createSelector(
+    [getDestination, getCatalog],
+    (destination, catalog) => {
+        if (destination === null) {
+            return null;
+        }
+
+        return catalog[destination].img;
+    }
+);
+
 // Task: Create selector for the destination image

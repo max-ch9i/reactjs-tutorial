@@ -8,12 +8,12 @@ export default combineReducers({
     catalog: () => ({
         jupiter: {
             title: 'Jupiter',
-            img: null,
+            img: '/jupiter.png',
             distance: 500000
         },
         venus: {
             title: 'Venus',
-            img: null,
+            img: '/venus.jpg',
             distance: 200000
         }
     })

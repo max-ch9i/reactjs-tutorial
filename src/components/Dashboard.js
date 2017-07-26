@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateTime, updateDestination } from '../actions';
-import { getSpeed, getDestinationTitle, getDistance } from '../selectors';
 import './Dashboard.css';
+
+import {
+    getSpeed,
+    getDestinationTitle,
+    getDistance,
+    getDestinationImg
+} from '../selectors';
 
 class Dashboard extends Component {
     updateTime = (e) => {
@@ -18,6 +24,9 @@ class Dashboard extends Component {
                     <h1>Spaceport</h1>
                     {0 ? <div>{this.props.speed}</div> : null}
                     <div className="destination">
+                        <div className="destination-image">
+                            <img src={this.props.destinationImg} alt={this.props.destination}/>
+                        </div>
                         {this.props.destination}
                         {this.props.distance}
                         {this.props.speed}
@@ -44,6 +53,7 @@ const mapStateToProps = (state) => {
         speed: getSpeed(state),
         destination: getDestinationTitle(state),
         distance: getDistance(state),
+        destinationImg: getDestinationImg(state)
     };
 };
 
