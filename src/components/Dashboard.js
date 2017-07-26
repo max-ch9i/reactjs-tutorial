@@ -4,7 +4,6 @@ import { updateTime, updateDestination } from '../actions';
 import './Dashboard.css';
 
 import {
-    getSpeed,
     getDestinationTitle,
     getDistance,
     getDestinationImg
@@ -12,7 +11,10 @@ import {
 
 class Dashboard extends Component {
     updateTime = (e) => {
-        this.props.updateTime(e.target.value);
+        if (e.which === 13) {
+            e.preventDefault();
+        }
+        this.props.updateTime(e.target.textContent);
     }
     updateDestination = (e) => {
         this.props.updateDestination(e.target.value);
@@ -32,14 +34,25 @@ class Dashboard extends Component {
                     </div>
                     <div className="controls">
                         <ul className="destination-selector">
-                            <li><button onClick={this.updateDestination} value="jupiter">Jupiter</button></li>
-                            <li><button onClick={this.updateDestination} value="venus">Venus</button></li>
+                            <li><button className="btn-destination" onClick={this.updateDestination} value="jupiter">Jupiter</button></li>
+                            <li><button className="btn-destination" onClick={this.updateDestination} value="venus">Venus</button></li>
                         </ul>
-                        <label htmlFor="duration">
-                            <span>Duration:</span>
-                            <input onChange={this.updateTime} id="duration" type="number"/>
-                            <span>years</span>
-                        </label>
+                        <div>
+                            Fly there for <span contentEditable="true" className="duration" onKeyDown={this.updateTime}></span> years
+                        </div>
+                    </div>
+                    <div className="summary">
+                        {!this.props.destination
+                                ? <div className="hint">Choose your destination</div>
+                                : !this.props.duration
+                                    ? <div className="hint">Choose your duration</div>
+                                    : null}
+                        {this.props.speed && isFinite(this.props.speed)
+                                ? <div className="resultant-speed">
+                                    <span className="resultant-label">Your speed will be</span>
+                                    <span className="resultant-value" data-unit="km/s">{this.props.speed.toFixed(0)}</span>
+                                  </div>
+                                : null}
                     </div>
                 </div>
             </section>
@@ -49,7 +62,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        speed: getSpeed(state),
+        speed: state.speed,
+        duration: state.duration,
         destination: getDestinationTitle(state),
         distance: getDistance(state),
         destinationImg: getDestinationImg(state)

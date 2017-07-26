@@ -12,6 +12,10 @@ body {
     font-size: .9em;
 }
 
+*:focus {
+    outline: none;
+}
+
 #root {
     width: 100%;
     height: 100%;
@@ -30,12 +34,12 @@ body {
     width: 100%;
     max-width: 250px;
     height: 100%;
-    max-height: 400px;
+    max-height: 450px;
     border-radius: 12px;
     box-shadow: inset 0 -20px 120px 0 rgba(0,0,0,.3),
                 0 30px 100px 0 rgba(0,0,0,.5),
                 0 0 50px 0 rgba(0,0,0,.1);
-    padding: 20px 50px 50px;
+    padding: 20px 50px 20px;
     background: url(/stars.png) no-repeat 50% 80%,
                 linear-gradient(to bottom, #393857 0%, #835871 50%, #d3788a 100%);
 }
@@ -56,14 +60,22 @@ h1 {
 }
 
 .destination {
-    height: 50%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.controls {
-    margin: auto 0;
+.controls, .summary {
+    margin: 0 0 auto;
+    text-align: center;
+}
+
+.summary {
+    border-top: 1px solid black;
+    border-image: linear-gradient(to right, rgba(47, 42, 63, 0) 0%, #835871 50%, rgba(47, 42, 63, 0) 100%) 1;
+    padding-top: 20px;
+    margin-top: auto;
 }
 
 .destination-selector {
@@ -71,7 +83,7 @@ h1 {
     flex-direction: row;
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0 15px;
     justify-content: space-around;
 }
 
@@ -108,4 +120,99 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 2.5em;
+}
+
+.destination-selector .btn-destination {
+    border: 0;
+    background: rgba(100, 100, 100, 0);
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+    color: white;
+    font-size: .9em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 4px;
+    border-radius: 5px;
+    transition: background .5s, box-shadow .5s;
+}
+
+.destination-selector .btn-destination:hover {
+    background: rgba(100, 100, 100, .1);
+    cursor: pointer;
+    box-shadow: inset 0 0 15px 0 rgba(0,0,0,.1);
+}
+
+.duration {
+    min-width: 10px;
+    max-width: 200px;
+    border: 0;
+    border-bottom: 1px solid white;
+    height: 1.5em;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1em;
+    background: transparent;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.duration::placeholder {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .9em;
+    color: rgba(200, 200, 200, 1);
+}
+
+.hint {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .9em;
+    color: rgba(200, 200, 200, 1);
+}
+
+.resultant-speed {
+
+}
+.resultant-label {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .9em;
+    color: rgba(200, 200, 200, 1);
+}
+
+.resultant-value {
+    margin-top: 5px;
+    display: block;
+    color: white;
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 4px;
+    position: relative;
+    font-family: Helvetica;
+}
+
+.resultant-value::after {
+    content: attr(data-unit);
+    display: inline-block;
+    margin-left: 5px;
+    color: white;
+    font-size: .35em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 4px;
+    position: absolute;
+    bottom: 8px;
 }

@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-const getDuration = state => state.duration;
 const getDestination = state => state.destination;
 const getCatalog = state => state.catalog;
 
@@ -12,16 +11,6 @@ export const getDistance = createSelector(
         }
 
         return catalog[destination].distance;
-    }
-);
-
-export const getSpeed = createSelector(
-    [getDuration, getDistance],
-    (duration, distance) => {
-        if (!Number.isInteger(duration) || duration === 0) {
-            return null;
-        }
-        return distance / duration;
     }
 );
 
