@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "react-redux": "^5.0.5",
+    "reduce-reducers": "^0.1.2",
     "redux": "^3.7.2",
     "reselect": "^3.0.1"
   }

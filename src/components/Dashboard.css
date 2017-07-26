@@ -57,6 +57,9 @@ h1 {
 
 .destination {
     height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .controls {
@@ -95,4 +98,14 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.destination-image .where {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
 }

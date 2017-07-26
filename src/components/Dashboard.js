@@ -25,11 +25,10 @@ class Dashboard extends Component {
                     {0 ? <div>{this.props.speed}</div> : null}
                     <div className="destination">
                         <div className="destination-image">
-                            <img src={this.props.destinationImg} alt={this.props.destination}/>
+                            {this.props.destination
+                                ? <img src={this.props.destinationImg} alt={this.props.destination}/>
+                                : <span className="where">?</span>}
                         </div>
-                        {this.props.destination}
-                        {this.props.distance}
-                        {this.props.speed}
                     </div>
                     <div className="controls">
                         <ul className="destination-selector">

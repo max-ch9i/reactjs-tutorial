@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux';
+import reduceReducers from 'reduce-reducers';
 import FlightTime from './FlightTime';
 import FlightDestination from './FlightDestination';
+import {
+    getDistance,
+} from '../selectors';
 
-export default combineReducers({
+const isolatedReducers = combineReducers({
     duration: FlightTime,
     destination: FlightDestination,
     catalog: () => ({
         jupiter: {
             title: 'Jupiter',
-            img: '/jupiter.png',
+            img: '/jupiter.jpg',
             distance: 500000
         },
         venus: {
@@ -16,5 +20,15 @@ export default combineReducers({
             img: '/venus.jpg',
             distance: 200000
         }
-    })
- });
+    }),
+    speed: () => null
+});
+
+const finalReducer = reduceReducers(
+    isolatedReducers,
+    (state, action) => {
+        return {...state, speed: getDistance(state) / state.duration};
+    }
+);
+
+export default finalReducer;
