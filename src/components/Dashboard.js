@@ -19,8 +19,8 @@ class Dashboard extends Component {
         }
         this.props.updateTime(e.target.textContent);
     }
-    updateDestination = (e) => {
-        this.props.updateDestination(e.target.value);
+    updateDestination = (destination) => {
+        this.props.updateDestination(destination);
     }
     render() {
         const { destination, destinationImg, duration, speed, catalog } = this.props;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './DestinationSelector.css';
 
 class DestinationSelector extends Component {
+    static defaultProps = {
+        catalog: {}
+    }
     render() {
         const { catalog, updateDestination } = this.props;
 
@@ -9,9 +12,9 @@ class DestinationSelector extends Component {
             <ul className="destination-selector">
                 { 
                     Object.keys(catalog).map(destination => 
-                        <li>
+                        <li key={destination}>
                             <button className="btn-destination"
-                                onClick={updateDestination}
+                                onClick={() => updateDestination(destination)}
                                 value={destination}>
                                 {catalog[destination].title}
                             </button>
