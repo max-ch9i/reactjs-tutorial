@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateTime, updateDestination } from '../actions';
 import './Dashboard.css';
 import Destination from './Destination';
+import Title from './Title';
 import DestinationSelector from './DestinationSelector';
 
 import {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
         return (
             <section className="Dashboard">
                 <div className="container">
-                    <h1>Spaceport</h1>
+                    <Title text="Spaceport" />
                     <Destination destination={destination} destinationImg={destinationImg} />
                     <div className="controls">
                         <DestinationSelector updateDestination={this.updateDestination} catalog={catalog} />

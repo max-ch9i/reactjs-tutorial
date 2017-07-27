@@ -8,7 +8,7 @@ class DestinationSelector extends Component {
         return(
             <ul className="destination-selector">
                 { 
-                    Object.keys(catalog).map((destination) => 
+                    Object.keys(catalog).map(destination => 
                         <li>
                             <button className="btn-destination"
                                 onClick={updateDestination}
