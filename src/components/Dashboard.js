@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateTime, updateDestination } from '../actions';
 import './Dashboard.css';
+import Destination from './Destination';
 
 import {
     getDestinationTitle,
@@ -24,14 +25,7 @@ class Dashboard extends Component {
             <section className="Dashboard">
                 <div className="container">
                     <h1>Spaceport</h1>
-                    {0 ? <div>{this.props.speed}</div> : null}
-                    <div className="destination">
-                        <div className="destination-image">
-                            {this.props.destination
-                                ? <img src={this.props.destinationImg} alt={this.props.destination}/>
-                                : <span className="where">?</span>}
-                        </div>
-                    </div>
+                    <Destination destination={this.props.destination} destinationImg={this.props.destinationImg} />
                     <div className="controls">
                         <ul className="destination-selector">
                             <li><button className="btn-destination" onClick={this.updateDestination} value="jupiter">Jupiter</button></li>
