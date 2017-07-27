@@ -14,8 +14,6 @@ describe('Task 2', () => {
     const updateDestination = jest.fn(destination => destination);
     const wrapper = shallow(<DestinationSelector catalog={catalog} updateDestination={updateDestination}/>);
 
-    it(`Component DestinationSelector\'s should be called with the catalog format`);
-
     it(`Component DestinationSelector\'s output format should be
             <ul><li><button></li></ul>
         where <li> represents each property in the catalog (e.g., Object.keys(catalog)`, () => {
