@@ -29,10 +29,24 @@ describe('Task 1', () => {
 
     it(`Fly there for... text should be lowercase.
         Apply duration-style class to the div to apply the transform.
-        Make change at ./src/Dashboard.js`, () => {
+        Make changes at ./src/Dashboard.js`, () => {
             const dashboard = wrapper.find('Dashboard');
-            const fly = dashboard.find('.controls > div');    
+            const fly = dashboard.find('.controls > div');
             expect(fly.length).toBe(1);
-            expect(fly.props().className).toBe('duration-style');
+            expect(fly).toHaveProp('className', 'duration-style');
+    });
+});
+
+describe('Task 2', () => {
+    const wrapper = mount(<App />);
+
+    it(`Display hints on how to use the application.
+        Use a prepared Hint component and pass correct properties to it.
+        Make changes at ./src/Dashboard.js`, () => {
+            const dashboard = wrapper.find('Dashboard');
+            const hint = dashboard.find('.summary').find('Hint');
+            expect(hint).toBePresent();
+            expect(hint).toHaveProp('duration', null);
+            expect(hint).toHaveProp('destination', null);
     });
 });
