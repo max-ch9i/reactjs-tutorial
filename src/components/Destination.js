@@ -22,8 +22,9 @@ class Destination extends Component {
 
         if (nextProps.destination !== destination) {
             const tl = new TimelineLite();
+            const animationDuration = .4;
 
-            tl.to(this.domImg, .4, { x: '300px',
+            tl.to(this.domImg, animationDuration, { x: '300px',
                 ease: Power2.easeIn,
                 onComplete: _ => {
                     this.setState({
@@ -33,7 +34,7 @@ class Destination extends Component {
                 }
             })
             .set(this.domImg, { x: '-300px' })
-            .to(this.domImg, .4, { x: '0',
+            .to(this.domImg, animationDuration, { x: '0',
                 ease: Power2.easeOut
             });
         }
