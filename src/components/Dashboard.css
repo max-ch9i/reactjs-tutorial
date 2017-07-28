@@ -64,6 +64,10 @@ h1 {
     text-align: center;
 }
 
+.controls {
+    text-transform: uppercase;
+}
+
 .summary {
     border-top: 1px solid black;
     border-image: linear-gradient(to right, rgba(47, 42, 63, 0) 0%, #835871 50%, rgba(47, 42, 63, 0) 100%) 1;
@@ -114,6 +118,10 @@ h1 {
     background: transparent;
     color: white;
     letter-spacing: 2px;
+}
+
+.duration-style {
+    text-transform: none;
 }
 
 .duration::placeholder {

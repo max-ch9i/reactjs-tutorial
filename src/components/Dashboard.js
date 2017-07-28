@@ -13,10 +13,12 @@ import {
 } from '../selectors';
 
 class Dashboard extends Component {
-    updateTime = (e) => {
+    preventEnter = (e) => {
         if (e.which === 13) {
             e.preventDefault();
         }
+    }
+    updateTime = (e) => {
         this.props.updateTime(e.target.textContent);
     }
     updateDestination = (destination) => {
@@ -32,16 +34,14 @@ class Dashboard extends Component {
                     <Destination destination={destination} destinationImg={destinationImg} />
                     <div className="controls">
                         <DestinationSelector updateDestination={this.updateDestination} catalog={catalog} />
-                        <div>
-                            Fly there for <span contentEditable="true" className="duration" onKeyUp={this.updateTime}></span> years
-                        </div>
+                        <div className="duration-style">Fly there for <span contentEditable="true" className="duration" onKeyDown={this.preventEnter} onKeyUp={this.updateTime}></span> years</div>
                     </div>
                     <div className="summary">
                         {!destination
-                                ? <div className="hint">Choose your destination</div>
-                                : !duration
-                                    ? <div className="hint">Choose your duration</div>
-                                    : null}
+                            ? <div className="hint">Choose your destination</div>
+                            : !duration
+                            ? <div className="hint">Choose your duration</div>
+                            : null}
                         {speed && isFinite(speed)
                                 ? <div className="resultant-speed">
                                     <span className="resultant-label">Your speed will be</span>
