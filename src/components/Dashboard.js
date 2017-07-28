@@ -36,7 +36,14 @@ class Dashboard extends Component {
                     <Destination destination={destination} destinationImg={destinationImg} />
                     <div className="controls">
                         <DestinationSelector updateDestination={this.updateDestination} catalog={catalog} />
-                        <div className="duration-style">Fly there for <span contentEditable="true" className="duration" onKeyDown={this.preventEnter} onKeyUp={this.updateTime}></span> years</div>
+                        {/*
+                         * Task 1. Make Fly there for... text lowercase 
+                         *
+                         * Topics: JSX prop names. Help: https://facebook.github.io/react/docs/jsx-in-depth.html
+                         *
+                         * TODO: Apply duration-style class to the <div> below.
+                         */}
+                        <div>Fly there for <span contentEditable="true" className="duration" onKeyDown={this.preventEnter} onKeyUp={this.updateTime}></span> years</div>
                     </div>
                     <div className="summary">
                         <Hint destination={destination} duration={duration}/>
@@ -63,3 +70,36 @@ export default connect(mapStateToProps, {
     updateTime,
     updateDestination
 })(Dashboard);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Hint to Task 1: the props should look like className=""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Solution to Task 1: <div className="duration-style">
