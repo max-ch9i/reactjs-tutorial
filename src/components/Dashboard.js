@@ -5,6 +5,8 @@ import './Dashboard.css';
 import Destination from './Destination';
 import Title from './Title';
 import DestinationSelector from './DestinationSelector';
+import Hint from './Hint';
+import Speed from './Speed';
 
 import {
     getDestinationTitle,
@@ -37,17 +39,8 @@ class Dashboard extends Component {
                         <div className="duration-style">Fly there for <span contentEditable="true" className="duration" onKeyDown={this.preventEnter} onKeyUp={this.updateTime}></span> years</div>
                     </div>
                     <div className="summary">
-                        {!destination
-                            ? <div className="hint">Choose your destination</div>
-                            : !duration
-                            ? <div className="hint">Choose your duration</div>
-                            : null}
-                        {speed && isFinite(speed)
-                                ? <div className="resultant-speed">
-                                    <span className="resultant-label">Your speed will be</span>
-                                    <span className="resultant-value" data-unit="km/s">{speed.toFixed(0)}</span>
-                                  </div>
-                                : null}
+                        <Hint destination={destination} duration={duration}/>
+                        <Speed speed={speed}/>
                     </div>
                 </div>
             </section>
