@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Destination.css';
-
-import { TimelineLite, Power2 } from 'gsap';
+import planetTransition from '../animations/planet-transition';
 
 class Destination extends Component {
     constructor(props) {
@@ -21,21 +20,13 @@ class Destination extends Component {
         const {destination} = this.props;
 
         if (nextProps.destination !== destination) {
-            const tl = new TimelineLite();
             const animationDuration = .4;
 
-            tl.to(this.domImg, animationDuration, { x: '300px',
-                ease: Power2.easeIn,
-                onComplete: _ => {
-                    this.setState({
-                        destination: nextProps.destination,
-                        destinationImg: nextProps.destinationImg
-                    });
-                }
-            })
-            .set(this.domImg, { x: '-300px' })
-            .to(this.domImg, animationDuration, { x: '0',
-                ease: Power2.easeOut
+            planetTransition(this.domImg, animationDuration, () => {
+                this.setState({
+                    destination: nextProps.destination,
+                    destinationImg: nextProps.destinationImg
+                });
             });
         }
     }

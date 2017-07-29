@@ -2,8 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Title from '../Title';
 
-describe('Task 3', () => {
-
+describe('Task 3 (easy)', () => {
     it(`Spaceport should be the title of the app.
         Dashboard has a Title component with the text prop passed to it.
         Read the title from the prop text and place it in <h1>.

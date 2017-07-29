@@ -24,7 +24,7 @@ describe('App integrity checker', () => {
     });
 });
 
-describe('Task 1', () => {
+describe('Task 1 (easy)', () => {
     const wrapper = mount(<App />);
 
     it(`Fly there for... text should be lowercase.
@@ -37,7 +37,7 @@ describe('Task 1', () => {
     });
 });
 
-describe('Task 2', () => {
+describe('Task 2 (easy)', () => {
     const wrapper = mount(<App />);
 
     it(`Display hints on how to use the application.
