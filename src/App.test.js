@@ -50,3 +50,43 @@ describe('Task 2 (easy)', () => {
             expect(hint).toHaveProp('destination', null);
     });
 });
+
+import { updateTime } from './actions/flight';
+import {
+    UPDATE_TIME
+} from './actions/types';
+import FlightTime from './reducers/FlightTime';
+
+describe('Task 5 (hard) Update duration in the redux state', () => {
+    it(`Return the correct action type from updateTime action creator.
+        Make changes at ./src/actions/flight.js`, () => {
+        const action = updateTime(150);
+        expect(action).toMatchObject({
+            type: UPDATE_TIME,
+            payload: 150
+        });
+        const action1 = updateTime('150');
+        expect(action1).toMatchObject({
+            type: UPDATE_TIME,
+            payload: '150'
+        });
+    });
+
+    it(`FlightTime reducer must update its state when action type is UPDATE_TIME.
+        For any other action keep the state unchanged.
+        State must always be a number or null.
+        Make changes at ./src/reducers/FlightTime.js`, () => {
+        const state = FlightTime(null, {});
+        expect(state).toBeNull();
+        const state1 = FlightTime(null, {
+            type: UPDATE_TIME,
+            payload: 150
+        });
+        expect(state1).toBe(150);
+        const state2 = FlightTime(null, {
+            type: UPDATE_TIME,
+            payload: '150'
+        });
+        expect(state2).toBe(150);
+    });
+});
