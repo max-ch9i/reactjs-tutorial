@@ -2,6 +2,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import App from './App';
 
+const sample = {"venus":{"distance":200000,"img":"/venus.jpg","title":"Venus"},"jupiter":{"distance":500000,"img":"/jupiter.jpg","title":"Jupiter"}};
+
+fetchMock.get('http://beta.json-generator.com/api/json/get/VyuWWCrUm', sample);
+
 describe('App integrity checker', () => {
     const wrapper = mount(<App />);
 
@@ -89,4 +93,54 @@ describe('Task 5 (hard) Update duration in the redux state', () => {
         });
         expect(state2).toBe(150);
     });
+});
+
+import * as actions from './actions/types';
+import * as actionCreators from './actions/flight';
+import fetchMock from 'fetch-mock';
+import Catalog from './reducers/Catalog';
+
+describe('Task 6 (ludicrous) Load the catalog asynchronously', () => {
+    it(`Create action types LOAD_CATALOG and UPDATE_CATALOG.
+        Make changes at ./src/actions/types.js`, () => {
+        expect(actions).toHaveProperty('LOAD_CATALOG');
+        expect(actions).toHaveProperty('UPDATE_CATALOG');
+    });
+    it(`Create action creators for loading and updating the catalog.
+        Make changes at ./src/actions/flight.js`, () => {
+            expect(actionCreators).toHaveProperty('updateCatalog');
+            expect(actionCreators).toHaveProperty('loadCatalog');
+
+            const {updateCatalog, loadCatalog} = actionCreators;
+
+            const action = updateCatalog(sample);
+            expect(action).toMatchObject({
+                type: actions.UPDATE_CATALOG,
+                payload: sample
+            });
+
+            const promise = loadCatalog('http://beta.json-generator.com/api/json/get/VyuWWCrUm')((action) => {
+                expect(action).toMatchObject({
+                    type: actions.UPDATE_CATALOG,
+                    payload: sample
+                });
+            });
+
+            return promise;
+    });
+    it(`Create a reducer for the catalog property in the state.
+        Make changes at ./src/reducers/Catalog.js`, () => {
+            const state = Catalog(undefined, {});
+            expect(state).toMatchObject({});
+            const state1 = Catalog(undefined, {
+                type: actions.UPDATE_CATALOG,
+                payload: sample
+            });
+            expect(state1).toMatchObject(sample);
+        });
+    it(`Dispatch loadCatalog when App is mounted.
+        The url with the catalog is http://beta.json-generator.com/api/json/get/VyuWWCrUm
+        Make changes at ./App.js`, () => {
+
+        });
 });
