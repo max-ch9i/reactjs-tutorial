@@ -1,8 +1,8 @@
 import { TimelineLite, Power2 } from 'gsap';
 
-export default (elm, duration, cb) => {
+export default (elm, cb) => {
     const tl = new TimelineLite();
-    const animationDuration = duration;
+    const animationDuration = .4;
 
     tl.to(elm, animationDuration, { x: '300px',
         ease: Power2.easeIn,

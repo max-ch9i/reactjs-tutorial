@@ -17,18 +17,23 @@ class Destination extends Component {
         });
     }
     componentWillReceiveProps(nextProps) {
-        const {destination} = this.props;
+        const currentDestination = this.props.destination;
+        const nextDestination = nextProps.destination;
+        const nextDestinationImg = nextProps.destinationImg;
+        const imageElm = this.domImg;
 
-        if (nextProps.destination !== destination) {
-            const animationDuration = .4;
-
-            planetTransition(this.domImg, animationDuration, () => {
-                this.setState({
-                    destination: nextProps.destination,
-                    destinationImg: nextProps.destinationImg
-                });
-            });
-        }
+        /*
+         * Task 4. Animate in the new destination image
+         *
+         * Topics: state, lifecycle events.
+         *
+         * Help: https://facebook.github.io/react/docs/react-component.html#setstate
+         *       https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops
+         *
+         * TODO: Compare the existing destination (currentDestination) with the new value coming in props (nextDestination).
+         *       If they are different, update the state AFTER 400ms to allow the image to animate out first.
+         *       Use planetTransition(imageElm, _ => {Update state here}) to animate and update the state in the callback argument
+         */
     }
     render() {
         return(
@@ -45,3 +50,54 @@ class Destination extends Component {
 
 export default Destination;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Hint to Task 4: Do a strict comparison if (currentDestination !== nextDestination)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Solution to Task 4:
+ *
+ *      if (currentDestination !== nextDestination) {
+ *          planetTransition(imageElm, _ => {
+ *              this.setState({
+ *                  destination: nextDestination,
+ *                  destinationImg: nextDestinationImg
+ *              });
+ *          });
+ *      }
+ */
