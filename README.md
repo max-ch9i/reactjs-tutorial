@@ -10,7 +10,7 @@ npm start
 
 npm test
 
-# Then press 'a' to run all tests
+# Then press 'a' to run all the tests
 ```
 
 Good luck!
