@@ -5,7 +5,6 @@ import thunkMiddleware from 'redux-thunk';
 import reducers from './reducers';
 import Dashboard from './components/Dashboard';
 // Task 6. import a load catalog action creator
-import { loadCatalog } from './actions/flight';
 
 class App extends Component {
     componentWillMount() {
@@ -23,9 +22,6 @@ class App extends Component {
          *
          *       this.store.dispatch(loadCatalog(url));
          */
-        this.store.dispatch(
-            loadCatalog('http://beta.json-generator.com/api/json/get/VyuWWCrUm')
-        );
     }
     render() {
         return (

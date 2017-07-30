@@ -131,7 +131,7 @@ describe('Task 6 (ludicrous) Load the catalog asynchronously', () => {
     it(`Create a reducer for the catalog property in the state.
         Make changes at ./src/reducers/Catalog.js`, () => {
             const state = Catalog(undefined, {});
-            expect(state).toMatchObject({});
+            expect(Object.keys(state)).toHaveLength(0);
             const state1 = Catalog(undefined, {
                 type: actions.UPDATE_CATALOG,
                 payload: sample
