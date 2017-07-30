@@ -138,9 +138,4 @@ describe('Task 6 (ludicrous) Load the catalog asynchronously', () => {
             });
             expect(state1).toMatchObject(sample);
         });
-    it(`Dispatch loadCatalog when App is mounted.
-        The url with the catalog is http://beta.json-generator.com/api/json/get/VyuWWCrUm
-        Make changes at ./App.js`, () => {
-
-        });
 });

@@ -23,7 +23,9 @@ class App extends Component {
          *
          *       this.store.dispatch(loadCatalog(url));
          */
-        this.store.dispatch(loadCatalog('http://beta.json-generator.com/api/json/get/VyuWWCrUm'));
+        this.store.dispatch(
+            loadCatalog('http://beta.json-generator.com/api/json/get/VyuWWCrUm')
+        );
     }
     render() {
         return (
@@ -35,6 +37,35 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
